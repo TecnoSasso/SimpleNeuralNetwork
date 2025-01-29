@@ -1,4 +1,4 @@
-<img width="100" align="left" style="float: left; margin: 0 15px 0 0;" alt="Full Adder" src="https://raw.githubusercontent.com/TecnoSasso/SimpleNeuralNetwork/main/img/logo.png">
+<img width="100" align="left" style="float: left; margin: 0 15px 0 0;" alt="Neural Network" src="https://raw.githubusercontent.com/TecnoSasso/SimpleNeuralNetwork/main/img/logo.png">
 # Simple Neural Network from Scratch
 
 This project implements a simple but fully connected neural network from scratch in Python, without using deep learning libraries such as TensorFlow or PyTorch. The network is designed to be trained on the MNIST dataset and can be used directly from the terminal.
