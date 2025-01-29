@@ -69,7 +69,7 @@ To classify a custom image, use the `i` option and provide the image filename (m
 - `networkData/biases.txt` - Saved biases
 
   
-<img alt="File Structure" src="https://raw.githubusercontent.com/TecnoSasso/SimpleNeuralNetwork/main/img/file_structure.png">
+<img alt="File Structure" src="https://raw.githubusercontent.com/TecnoSasso/SimpleNeuralNetwork/main/img/File_Structure.png">
 
 ## Notes
 - The network uses backpropagation with gradient descent for training.
