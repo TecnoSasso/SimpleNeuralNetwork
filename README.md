@@ -45,10 +45,14 @@ Run the script and select the training mode:
 python Neural-Network.py
 ```
 Then, choose `t` for training and specify the batch size and learning rate when prompted.
+
+
 <img alt="Train" src="https://raw.githubusercontent.com/TecnoSasso/SimpleNeuralNetwork/main/img/average_cost.png">
 
 ### Evaluating Accuracy
 After training, you can evaluate the network's accuracy on the test dataset by selecting `a`.
+
+
 <img alt="Accuracy Example" src="https://raw.githubusercontent.com/TecnoSasso/SimpleNeuralNetwork/main/img/accuracy.png">
 
 ### Predicting from an Image
@@ -63,6 +67,8 @@ To classify a custom image, use the `i` option and provide the image filename (m
 - `mnist_test.csv` - Test dataset
 - `networkData/weights.txt` - Saved weights
 - `networkData/biases.txt` - Saved biases
+
+  
 <img alt="File Structure" src="https://raw.githubusercontent.com/TecnoSasso/SimpleNeuralNetwork/main/img/file_structure.png">
 
 ## Notes
