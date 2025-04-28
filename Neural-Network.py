@@ -52,24 +52,11 @@ lines = []
 example = []
 
 
-def Sigmoid(x):
+def ReLu(x):
     return max(0, x)
-    """
-    try:
-        return 1/(1 + math.e**(-x))  # Sigmoid
-    except OverflowError:
-        if x > 0:
-            return 1
-        else:
-            return 0
-    """
 
-def SigmoidDer(x):
+def ReLuDer(x):
     return 1 if x > 0 else 0
-    """
-    s = Sigmoid(x)
-    return s*(1-s)
-    """
 
 
 class neuron:
@@ -88,7 +75,7 @@ class neuron:
             self.value += c.start.value * c.weight
         self.value += self.bias
         self.z = self.value
-        self.value = Sigmoid(self.value)
+        self.value = ReLu(self.value)
 
 class connection():
     def __init__(self, start, end, n_in):
@@ -136,20 +123,20 @@ def cost(exampleIndex):
 def DerCostWeight(connection, y):
     if len(connection.end.outConnections) == 0:  # If the connection is in the last layer
         yI = outputLayer.index(connection.end)
-        return connection.start.value*SigmoidDer(connection.end.z)*2*(connection.end.value - y[yI])  # d/dW C
+        return connection.start.value*ReLuDer(connection.end.z)*2*(connection.end.value - y[yI])  # d/dW C
 
     else:  # Not a connection in the last layer
-        return connection.start.value*SigmoidDer(connection.end.z)*connection.end.influence  # d/dW A * d/dA C
+        return connection.start.value*ReLuDer(connection.end.z)*connection.end.influence  # d/dW A * d/dA C
 
 
 # Derivative of Cost with respect to a bias
 def DerCostBias(Neuron, y):
     if len(Neuron.outConnections) == 0:  # If the neuron is in the last layer
         yI = outputLayer.index(Neuron)
-        return SigmoidDer(Neuron.z)*2*(Neuron.value - y[yI])  # d/dB C
+        return ReLuDer(Neuron.z)*2*(Neuron.value - y[yI])  # d/dB C
 
     else:  # Not a connection in the last layer
-        return SigmoidDer(Neuron.z)*Neuron.influence  # d/dB A * d/dA C
+        return ReLuDer(Neuron.z)*Neuron.influence  # d/dB A * d/dA C
 
 
 # Derivative of Cost with respect to the neuron activation
@@ -159,11 +146,11 @@ def DerCostAct(Neuron, y):
     if len(Neuron.outConnections[0].end.outConnections) == 0:
         for c in Neuron.outConnections:
             yI = outputLayer.index(c.end)
-            finalDer += c.weight*SigmoidDer(c.end.z)**2*(c.end.value - y[yI])
+            finalDer += c.weight*ReLuDer(c.end.z)**2*(c.end.value - y[yI])
 
     else:  # Not a connection in the second to last layer
         for c in Neuron.outConnections:
-            finalDer += c.weight*SigmoidDer(c.end.z)*c.end.influence  # d/dA A[L+1] * d/A[L+1] C
+            finalDer += c.weight*ReLuDer(c.end.z)*c.end.influence  # d/dA A[L+1] * d/A[L+1] C
         
     return finalDer
 
